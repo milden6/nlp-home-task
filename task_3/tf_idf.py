@@ -25,8 +25,8 @@ def compute_idf(doc_list):
     return idf_dict
 
 
-def compute_tf_idf(tfBow, idfs):
+def compute_tf_idf(tf_dict, idfs):
     tf_idf = {}
-    for word, val in tfBow.items():
+    for word, val in tf_dict.items():
         tf_idf[word] = val * idfs[word]
     return tf_idf
