@@ -5,7 +5,6 @@ also
 an
 and
 another
-april
 are
 as
 at
@@ -48,8 +47,6 @@ other
 our
 over
 own
-people
-right
 said
 same
 set
@@ -71,7 +68,6 @@ up
 use
 using
 very
-video
 we
 well
 were

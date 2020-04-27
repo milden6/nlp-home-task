@@ -1,5 +1,6 @@
 import tokenizator
 import os
+import re
 
 # create dict from text with key and value(word count)
 def create_dict(text):
@@ -22,6 +23,7 @@ def get_texts_list(path):
     texts_list = []
 
     for file in os.walk(path):
+        file[2].sort(key=lambda f: int(re.sub('\D', '', f)))
         for f in file[2]:
             text = open(path + f, "r").read().lower()
             texts_list.append(text)
@@ -36,3 +38,8 @@ def write_file(filename, data):
 
     write.write(str)
     write.close()
+
+# class Structure:
+#     def __init__(self, file_name, text):
+#         self.file_name = file_name
+#         self.text = text
