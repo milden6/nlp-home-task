@@ -13,3 +13,7 @@
 3. ###### Third task
 
    Making a stop-word dictionary and thematic dictionaries using TF-IDF and a contrast method
+
+4. ###### Fourth task
+
+   Co-co-occurrence matrix, PPMI matrix and cosine similarity
