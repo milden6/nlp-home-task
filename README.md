@@ -17,3 +17,7 @@
 4. ###### Fourth task
 
    Co-co-occurrence matrix, PPMI matrix and cosine similarity
+
+5. ###### Fifth task
+
+   Naive Bayes spam filtering
