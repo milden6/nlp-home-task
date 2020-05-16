@@ -1,5 +1,6 @@
 from collections import defaultdict
 from common_utils import sentence_preprocessing
+from scipy import linalg
 import numpy as np
 import pandas as pd
 
@@ -45,10 +46,36 @@ def ppmi(data_frame):
     data_frame[data_frame < 0] = 0.0
     return data_frame
 
-#  measure of similarity between two non-zero vectors
+
+#  measure of similarity between two non-zero vectors by cos
 def cosine_similarity(a, b):
     dot = np.dot(a, b)
     norma = np.linalg.norm(a)
     normb = np.linalg.norm(b)
     cosine = dot / (norma * normb)
     return cosine
+
+# measure of similarity between two non-zero vectors by scalar
+def scalar(a, b):
+    length = min(a.shape[0], b.shape[0])
+    scalar = 0
+    for i in range(0, length):
+        scalar = scalar + a[i]*b[i]
+    return scalar
+
+
+def lsa(matrix):
+    # singular value decomposition
+    # u - unitary matrix having left singular vectors as columns
+    # sigma - the singular values, sorted in non-increasing order
+    # vt - unitary matrix having right singular vectors as rows
+    u, sigma, vt = linalg.svd(matrix)
+
+    # construct the sigma matrix in SVD from singular values and size M, N
+    # and transform
+    transformed_matrix = np.dot(np.dot(u, linalg.diagsvd(sigma, len(matrix), len(vt))), vt)
+
+    col = matrix.keys()
+    data_frame = pd.DataFrame(data=transformed_matrix, columns=col, index=col )
+
+    return data_frame
