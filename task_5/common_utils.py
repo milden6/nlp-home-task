@@ -18,7 +18,7 @@ def read_sms(path):
     sms_words = []
 
     for line in f.readlines():
-        linedatas = line.strip().split(',')
+        linedatas = line.strip().split('\t')
         if linedatas[0] == 'ham':
             class_category.append(0)
         elif linedatas[0] == 'spam':
@@ -26,6 +26,7 @@ def read_sms(path):
 
         words = text_preprocessing(linedatas[1])
         sms_words.append(words)
+
     return sms_words, class_category
 
 
@@ -58,7 +59,8 @@ def set_of_words_list_to_vector(vocabulary_list, sms_words_list):
 # Write file
 def write_file(filename, data):
     write = open(filename, "w")
-    str = '\n'
+    #str = '\n'
+    str = ''
 
     str = str.join(data)
 
