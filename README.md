@@ -21,3 +21,5 @@
 5. ###### Fifth task
 
    Naive Bayes spam filtering
+   
+   **Test results:** from a sample of 5573 rows, 1000 rows were tested using cross-validation and the average classification error rate is about 2.5%.
