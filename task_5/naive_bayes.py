@@ -42,21 +42,27 @@ def classify(vocabulary_list, p_words_spamicity, p_words_healthy, p_spam, test_w
         return 0
 
 
-# classification error rate
+# metrics
 def quality_control(path, test_count):
 
     sms_words, class_lables = common_utils.read_sms(path)
 
-    # cross-validation
+    true_positive_spam = 0.0
+    true_negative_spam = 0.0
+    false_positive_spam = 0.0
+    false_negative_spam = 0.0
+
+    true_positive_ham = 0.0
+    true_negative_ham = 0.0
+    false_positive_ham = 0.0
+    false_negative_ham = 0.0
+
     test_words = []
     test_words_type = []
 
     for i in range(test_count):
-        random_index = int(random.uniform(0, len(sms_words)))
-        test_words_type.append(class_lables[random_index])
-        test_words.append(sms_words[random_index])
-        del (sms_words[random_index])
-        del (class_lables[random_index])
+        test_words_type.append(class_lables[i])
+        test_words.append(sms_words[i])
 
     vocabulary_list = common_utils.create_vocabulary_list(sms_words)
     train_marked_words = common_utils.set_of_words_list_to_vector(vocabulary_list, sms_words)
@@ -64,11 +70,38 @@ def quality_control(path, test_count):
     train_marked_words = np.array(train_marked_words)
     p_words_spamicity, p_words_healthy, p_spam = training(train_marked_words, class_lables)
 
-    error_count = 0.0
     for i in range(test_count):
         sms_type = classify(vocabulary_list, p_words_spamicity,
                             p_words_healthy, p_spam, test_words[i])
-        if sms_type != test_words_type[i]:
-            error_count += 1
+        if (sms_type == 1) and (test_words_type[i] == 1):
+            true_positive_spam += 1
+        if (sms_type == 0) and (test_words_type[i] == 0):
+            true_negative_spam += 1
+        if (sms_type == 1) and (test_words_type[i] == 0):
+            false_positive_spam += 1
+        if (sms_type == 0) and (test_words_type[i] == 1):
+            false_negative_spam += 1
 
-    return 'Number of errors: {} Error rate: {}%'.format(error_count, ((error_count / test_count) * 100))
+        if (sms_type == 0) and (test_words_type[i] == 0):
+            true_positive_ham += 1
+        if (sms_type == 1) and (test_words_type[i] == 1):
+            true_negative_ham += 1
+        if (sms_type == 0) and (test_words_type[i] == 1):
+            false_positive_ham += 1
+        if (sms_type == 1) and (test_words_type[i] == 0):
+            false_negative_ham += 1
+
+    precision_spam = true_positive_spam / (true_positive_spam + false_positive_spam)
+    recall_spam = true_positive_spam / (true_positive_spam + false_negative_spam)
+    f_score_spam = 2 * ((precision_spam * recall_spam) / (precision_spam + recall_spam))
+
+    precision_ham = true_positive_ham / (true_positive_ham + false_positive_ham)
+    recall_ham = true_positive_ham / (true_positive_ham + false_negative_ham)
+    f_score_ham = 2 * ((precision_ham * recall_ham) / (precision_ham + recall_ham))
+
+    print(precision_spam, recall_spam, f_score_spam)
+    print(precision_ham, recall_ham, f_score_ham)
+
+    return 'Precision(spam): {}. Recall(spam): {}. F-score(spam): {}.\n Precision(ham): {}. '\
+           'Recall(ham): {}. F-score(ham): {}.'.format(precision_spam, recall_spam, f_score_spam,
+                                                       precision_ham, recall_ham, f_score_ham)

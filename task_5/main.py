@@ -13,8 +13,6 @@ train_marked_words = common_utils.set_of_words_list_to_vector(vocabulary_list, s
 train_marked_words = np.array(train_marked_words)
 p_words_spamicity, p_words_healthy, p_spam = naive_bayes.training(train_marked_words, class_lables)
 
-#
-
 # classify test data
 path = './spam_data.csv'
 sms_words, class_lables = common_utils.read_sms(path)
@@ -37,5 +35,3 @@ path_full_spam = './spam_full.csv'
 quality_control = naive_bayes.quality_control(path_full_spam, 1000)
 
 common_utils.write_file("quality_control", quality_control)
-
-

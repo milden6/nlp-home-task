@@ -1,1 +1,2 @@
-Number of errors: 25.0 Error rate: 2.5%
+Precision(spam): 0.9371069182389937. Recall(spam): 0.9802631578947368. F-score(spam): 0.9581993569131834.
+ Precision(ham): 0.9964328180737217. Recall(ham): 0.9882075471698113. F-score(ham): 0.9923031379514505.
