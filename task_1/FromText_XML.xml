@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<doc>
+  <block name="Список_покупок">
+    <text>Хлеб</text>
+    <text>Чай</text>
+    <text>Колбаса</text>
+    <text>Молоко</text>
+  </block>
+  <block name="Топ_Linux_дистрибутивов">
+    <text>Manjaro</text>
+    <text>Fedora</text>
+    <text>Elementary</text>
+  </block>
+</doc>
