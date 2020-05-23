@@ -1,0 +1,60 @@
+Document #0:
+topic0 topic1 topic2 
+Document #1:
+topic2 topic1 topic0 
+Document #2:
+topic1 topic2 topic0 
+Document #3:
+topic0 topic2 topic1 
+Document #4:
+topic1 topic2 topic0 
+Document #5:
+topic0 topic2 topic1 
+Document #6:
+topic2 topic1 topic0 
+Document #7:
+topic0 topic2 topic1 
+Document #8:
+topic2 topic0 topic1 
+Document #9:
+topic0 topic1 topic2 
+Document #10:
+topic2 topic1 topic0 
+Document #11:
+topic1 topic0 topic2 
+Document #12:
+topic1 topic2 topic0 
+Document #13:
+topic0 topic2 topic1 
+Document #14:
+topic2 topic1 topic0 
+Document #15:
+topic2 topic0 topic1 
+Document #16:
+topic1 topic2 topic0 
+Document #17:
+topic2 topic1 topic0 
+Document #18:
+topic2 topic0 topic1 
+Document #19:
+topic0 topic1 topic2 
+Document #20:
+topic2 topic0 topic1 
+Document #21:
+topic0 topic2 topic1 
+Document #22:
+topic1 topic2 topic0 
+Document #23:
+topic1 topic0 topic2 
+Document #24:
+topic0 topic2 topic1 
+Document #25:
+topic1 topic2 topic0 
+Document #26:
+topic2 topic0 topic1 
+Document #27:
+topic1 topic2 topic0 
+Document #28:
+topic0 topic1 topic2 
+Document #29:
+topic2 topic1 topic0 
